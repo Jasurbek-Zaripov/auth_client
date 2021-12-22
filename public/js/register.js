@@ -1,6 +1,5 @@
 if (localStorage.getItem('user_name_for_check')) {
   location = '/'
-  return
 }
 const user_input = document.querySelector('#userInp')
 const user_error = document.querySelector('#userError')
@@ -141,14 +140,13 @@ setInterval(() => {
 }, 1000)
 
 button_btn.onclick = async () => {
-  if (button_btn.disabled) return
   let username = user_input.value
   let password = pass_input.value
   let birth = brith_inp.value
   let select = document.querySelector('#gender_select')
   let gender = select.value
 
-  let result = await fetch('http://192.168.0.37:5000/user/new', {
+  let result = await fetch('http://192.168.0.37:3000/user/new', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -168,7 +166,8 @@ button_btn.onclick = async () => {
   result = await result.json()
   if (result['ERROR']) {
     return alert(result['ERROR'])
+  } else {
+    localStorage.setItem('user_name_for_check', username)
+    location = '/'
   }
-  localStorage.setItem('user_name_for_check', username)
-  location = '/'
 }
