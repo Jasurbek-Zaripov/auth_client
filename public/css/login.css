@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.bady {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  margin: 0 auto;
+  border: 1px solid red;
+  width: 650px;
+  height: auto;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.inp {
+  border: 1px solid white;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  height: 45px;
+  margin: 0 auto;
+  margin-top: 16px;
+  font-size: 25px;
+  background-color: black;
+  border-radius: 20px;
+  border: none;
+  padding-left: 30px;
+  color: red;
+  border-color: red;
+}
+
+.inp::placeholder {
+  color: red;
+  opacity: 1;
+}
+
+.inp:hover::placeholder {
+  color: blue;
+  opacity: 1;
+}
+
+.inp:hover {
+  border: 1px solid;
+  border-color: blue;
+}
+
+.btn {
+  width: 100px;
+  height: 35px;
+  color: red;
+  background-color: black;
+  margin-left: 80%;
+  margin-top: 3%;
+  margin-bottom: 10px;
+  border-color: red;
+}
+
+.btn:hover {
+  color: blue;
+  border-style: solid;
+  border-color: blue;
+}

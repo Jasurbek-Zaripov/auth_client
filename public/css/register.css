@@ -1,0 +1,85 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.container {
+  /* border: 1px solid black; */
+  width: 710px;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 15%;
+}
+
+.container2 {
+  display: flex;
+}
+
+.div {
+  margin-left: 10px;
+}
+
+.h1 {
+  font-size: 24px;
+  color: rgb(73, 74, 75);
+  margin-top: 20px;
+}
+
+.inp {
+  width: 350px;
+  height: 42px;
+  font-size: 22px;
+  border-radius: 4px;
+  margin-top: 16px;
+  padding: 0 10px;
+}
+
+.qiz {
+  margin-top: 10px;
+  color: red;
+  font-size: 18px;
+}
+
+.yash {
+  margin-top: 10px;
+  color: green;
+  font-size: 18px;
+}
+
+.btn-container {
+  margin-top: 10px;
+}
+
+.btn1 {
+  margin-top: 10px;
+  width: 100px;
+  height: 37px;
+  border-radius: 5px;
+  font-size: 19px;
+  color: rgb(47, 100, 249);
+  background-color: white;
+  border-color: rgb(47, 100, 249);
+}
+
+.btn2 {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100px;
+  height: 37px;
+  border-radius: 5px;
+  font-size: 19px;
+  color: rgb(58, 118, 67);
+  border-color: rgb(58, 118, 67);
+  background-color: white;
+  list-style-type: none;
+}
+
+.inpQiz {
+  border: 3px solid red;
+}
+
+.inpYash {
+  border: 3px solid green;
+}
