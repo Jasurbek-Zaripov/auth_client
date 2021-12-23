@@ -2,69 +2,75 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
-
-.bady {
-  background-color: black;
-  display: flex;
-  align-items: center;
-  height: 100vh;
+  font-family: 'Poppins', sans-serif;
 }
 
 .container {
-  margin: 0 auto;
-  border: 1px solid red;
-  width: 650px;
+  /* border: 1px solid black; */
+  width: 600px;
   height: auto;
-  border-radius: 10px;
-  padding: 20px;
+  margin: 0 auto;
+  margin-top: 15%;
+}
+
+.h1 {
+  font-size: 24px;
+  color: rgb(73, 74, 75);
+  margin-top: 20px;
 }
 
 .inp {
-  border: 1px solid white;
-  display: flex;
-  flex-direction: column;
-  width: 400px;
-  height: 45px;
-  margin: 0 auto;
+  width: 550px;
+  height: 42px;
+  font-size: 22px;
+  border-radius: 4px;
   margin-top: 16px;
-  font-size: 25px;
-  background-color: black;
-  border-radius: 20px;
-  border: none;
-  padding-left: 30px;
+  padding: 0 10px;
+}
+
+.qiz {
+  margin-top: 10px;
   color: red;
-  border-color: red;
+  font-size: 18px;
 }
 
-.inp::placeholder {
-  color: red;
-  opacity: 1;
+.yash {
+  margin-top: 10px;
+  color: green;
+  font-size: 18px;
 }
 
-.inp:hover::placeholder {
-  color: blue;
-  opacity: 1;
+.btn-container {
+  margin-top: 10px;
 }
 
-.inp:hover {
-  border: 1px solid;
-  border-color: blue;
-}
-
-.btn {
+.btn1 {
+  margin-top: 10px;
   width: 100px;
-  height: 35px;
-  color: red;
-  background-color: black;
-  margin-left: 80%;
-  margin-top: 3%;
-  margin-bottom: 10px;
-  border-color: red;
+  height: 37px;
+  border-radius: 5px;
+  font-size: 19px;
+  color: rgb(47, 100, 249);
+  background-color: white;
+  border-color: rgb(47, 100, 249);
 }
 
-.btn:hover {
-  color: blue;
-  border-style: solid;
-  border-color: blue;
+.btn2 {
+  margin-top: 10px;
+  margin-left: 10px;
+  width: 100px;
+  height: 37px;
+  border-radius: 5px;
+  font-size: 19px;
+  color: rgb(58, 118, 67);
+  border-color: rgb(58, 118, 67);
+  background-color: white;
+}
+
+.inpQiz {
+  border: 3px solid red;
+}
+
+.inpYash {
+  border: 3px solid green;
 }
