@@ -150,7 +150,7 @@ button_btn.onclick = async () => {
   let select = document.querySelector('#gender_select')
   let gender = select.value
 
-  let result = await fetch('https://auth0-server.herokuapp.com/user/new', {
+  let result = await fetch('http://localhost:3000/user/new', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',

@@ -59,7 +59,7 @@ login_btn.onclick = async () => {
   }
 
   if (user_bool && pass_bool) {
-    let result = await fetch('https://auth0-server.herokuapp.com/user/check', {
+    let result = await fetch('http://localhost:3000/user/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

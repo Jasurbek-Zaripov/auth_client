@@ -21,19 +21,16 @@ div_welcome.onclick = () => {
 }
 
 exit.onclick = async () => {
-  let result_online = await fetch(
-    `https://auth0-server.herokuapp.com/user/exit`,
-    {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        username: localStorage.getItem('user_name_for_check'),
-        user_id: localStorage.getItem('user_id_for_check'),
-      }),
-    }
-  )
+  let result_online = await fetch(`http://localhost:3000/user/exit`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      username: localStorage.getItem('user_name_for_check'),
+      user_id: localStorage.getItem('user_id_for_check'),
+    }),
+  })
 
   result_online = await result_online.json()
 
@@ -48,7 +45,7 @@ exit.onclick = async () => {
 
 main_start()
 async function main_start() {
-  let users = await fetch('https://auth0-server.herokuapp.com/users')
+  let users = await fetch('http://localhost:3000/users')
   users = await users.json()
 
   if (users['ERROR']) {
