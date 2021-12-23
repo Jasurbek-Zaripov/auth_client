@@ -4,9 +4,62 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="http://192.168.0.37:4000/css/todo.css" />
+    <title>Todo</title>
   </head>
   <body>
-    <h1>todo</h1>
+    <div class="modal">
+      <div class="modal-inner">
+        <div class="madal-error">
+          <h1 id="newTodoError">Todo</h1>
+        </div>
+        <p class="todos">Title</p>
+        <input class="inp" type="text" />
+        <p class="todos">Text</p>
+        <textarea class="textarea"></textarea>
+        <button class="close-btn" id="close">X</button>
+        <button class="close-save" id="save">Aniq bo'lsa bosing!</button>
+      </div>
+    </div>
+    <div class="all">
+      <div class="navbar-container">
+        <a href="http://192.168.0.37:4000/"
+          ><button class="btn1">Users</button></a
+        >
+        <h1 class="username"></h1>
+        <button id="exit" class="btn2">Log aut</button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="glav-container">
+        <h1 class="h1">Todo</h1>
+        <h1 class="h2">Doing</h1>
+        <h1 class="h3">Done</h1>
+      </div>
+      <button id="open" class="madal-btn"> + </button>
+    </div>
+    <div class="bady-container">
+      <!-- Todo -->
+      <div id="todoRed" class="list">
+        <!-- <div class="apend todo-qizil">
+          <h4>Title</h4>
+          <p
+            >Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+            Molestias, quis? Cum, sit adipisci cumque numquam laboriosam
+            corrupti dolor modi debitis.</p
+          >
+          <select class="select" id="">
+            <option selected value="todo">Todo</option>
+            <option value="doing">Doing</option>
+            <option value="done">Done</option>
+          </select>
+        </div> -->
+      </div>
+      <!-- Doing -->
+      <div id="todoYel" class="list"> </div>
+      <!-- Done -->
+      <div id="todoGre" class="list"> </div>
+    </div>
+    <script src="http://192.168.0.37:4000/js/todo.js"></script>
   </body>
 </html>
