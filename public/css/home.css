@@ -55,3 +55,36 @@
   height: 60px;
   font-size: 20px;
 }
+
+/* modal */
+
+.modal {
+  display: none;
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  /* background-color: rgb(0 0 0 / 60%); */
+}
+
+.modal-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 300px;
+  height: 65px;
+  background-color: white;
+  position: fixed;
+  right: 8%;
+  top: 6%;
+  box-shadow: 5px 5px 11px 0px #4e0303;
+  transform: translate(-50%, -50%);
+}
+
+.block {
+  display: block;
+}
+
+.todos {
+  font-size: 23px;
+}

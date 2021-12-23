@@ -4,6 +4,14 @@ if (!localStorage.getItem('user_name_for_check')) {
   location = '/user/login'
 }
 
+const div_welcome = document.querySelector('#welcome')
+div_welcome.classList.add('modal-inner')
+const salom = document.querySelector('#salom')
+salom.innerHTML = `Welcome ${localStorage.getItem('user_name_for_check')}!`
+div_welcome.onclick = () => {
+  div_welcome.classList.remove('modal-inner')
+}
+
 exit.addEventListener('click', async () => {
   let result_online = await fetch(
     `https://auth0-server.herokuapp.com/user/exit?username=${localStorage.getItem(
@@ -18,6 +26,7 @@ exit.addEventListener('click', async () => {
   if (result_online['ERROR']) {
     return alert(result_online['ERROR'])
   } else {
+    console.log(result_online['message'])
     localStorage.removeItem('user_name_for_check')
     location = '/user/login'
   }
