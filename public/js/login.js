@@ -1,4 +1,7 @@
-if (localStorage.getItem('user_name_for_check')) {
+if (
+  localStorage.getItem('user_name_for_check') ||
+  localStorage.getItem('user_id_for_check')
+) {
   location = '/'
 }
 
@@ -68,10 +71,12 @@ login_btn.onclick = async () => {
     })
 
     result = await result.json()
+
     if (result['ERROR']) {
       return alert(result['ERROR'])
-    } else {
+    } else if (result['message']) {
       localStorage.setItem('user_name_for_check', user_val)
+      localStorage.setItem('user_id_for_check', result['message'])
       location = '/'
     }
   }

@@ -1,41 +1,54 @@
 let search_username = localStorage.getItem('user_name_for_search')
 let my_name_local = localStorage.getItem('user_name_for_check')
 
-if (!my_name_local) {
-  location = '/user/login'
-}
+setInterval(() => {
+  if (
+    !localStorage.getItem('user_name_for_check') ||
+    !localStorage.getItem('user_id_for_check')
+  ) {
+    location = '/user/login'
+  }
+}, 1000)
 
 if (search_username) {
   localStorage.removeItem('user_name_for_search')
 } else {
-  search_username = my_name_local
+  location = '/'
 }
 
 let exit = document.querySelector('#exit')
-exit.addEventListener('click', async () => {
-  location = '/user/login'
+exit.onclick = async () => {
   let result_online = await fetch(
-    `https://auth0-server.herokuapp.com/user/exit?username=${localStorage.getItem(
-      'user_name_for_check'
-    )}`,
+    `https://auth0-server.herokuapp.com/user/exit`,
     {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: localStorage.getItem('user_name_for_check'),
+        user_id: localStorage.getItem('user_id_for_check'),
+      }),
     }
   )
+
   result_online = await result_online.json()
+
   if (result_online['ERROR']) {
     return alert(result_online['ERROR'])
-  } else {
+  } else if (result_online['message']) {
     localStorage.removeItem('user_name_for_check')
+    localStorage.removeItem('user_id_for_check')
     location = '/user/login'
   }
-})
+}
 
 const h1_username = document.querySelector('.username')
 h1_username.innerHTML = null
 h1_username.innerHTML = search_username
 
 let openn = document.querySelector('#open')
+
 setInterval(() => {
   if (my_name_local != search_username) {
     openn.disabled = true
@@ -46,11 +59,16 @@ setInterval(() => {
 
 let result
 main_start()
+
 async function main_start() {
   result = await fetch(
-    `https://auth0-server.herokuapp.com/todo?username=${search_username}`
+    'https://auth0-server.herokuapp.com/todo?username=' +
+      search_username +
+      '&user_id=' +
+      localStorage.getItem('user_id_for_check')
   )
   result = await result.json()
+
   if (result['ERROR']) {
     return alert(result['ERROR'])
   } else {
@@ -77,8 +95,10 @@ function render_todo() {
   todo_red.innerHTML = null
   todo_yel.innerHTML = null
   todo_gre.innerHTML = null
-  let i = []
-  for (const obj of result) {
+
+  for (const todo_id in result) {
+    let obj = result[todo_id]
+
     let div = document.createElement('div')
     let h4 = document.createElement('h4')
     let p = document.createElement('p')
@@ -89,6 +109,9 @@ function render_todo() {
 
     select.onchange = async eve => {
       if (my_name_local != search_username) return
+
+      console.log(eve.target)
+
       let res_put = await fetch('https://auth0-server.herokuapp.com/todo', {
         method: 'PUT',
         headers: {
@@ -96,17 +119,16 @@ function render_todo() {
         },
         body: JSON.stringify({
           username: my_name_local,
-          todoID: div.id,
+          todoID: todo_id,
           holat: select.value,
+          user_id: localStorage.getItem('user_id_for_check'),
         }),
       })
 
       res_put = await res_put.json()
+
       if (res_put['ERROR']) {
         return alert(res_put['ERROR'])
-      } else {
-        main_start()
-        return
       }
     }
 
@@ -140,8 +162,6 @@ function render_todo() {
       div.classList.add('todo-yashil')
       todo_gre.append(div)
     }
-    i.push(div)
-    div.id = i.length - 1
   }
   get_new_todo()
 }

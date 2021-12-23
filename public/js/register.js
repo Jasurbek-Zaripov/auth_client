@@ -1,6 +1,10 @@
-if (localStorage.getItem('user_name_for_check')) {
+if (
+  localStorage.getItem('user_name_for_check') ||
+  localStorage.getItem('user_id_for_check')
+) {
   location = '/'
 }
+
 const user_input = document.querySelector('#userInp')
 const user_error = document.querySelector('#userError')
 
@@ -151,23 +155,21 @@ button_btn.onclick = async () => {
     headers: {
       'Content-type': 'application/json',
     },
-    body: JSON.stringify(
-      {
-        username,
-        password,
-        birth,
-        gender,
-      },
-      null,
-      2
-    ),
+    body: JSON.stringify({
+      username,
+      password,
+      birth,
+      gender,
+    }),
   })
 
   result = await result.json()
+
   if (result['ERROR']) {
     return alert(result['ERROR'])
-  } else {
+  } else if (result['message']) {
     localStorage.setItem('user_name_for_check', username)
+    localStorage.setItem('user_id_for_check', result['message'])
     location = '/'
   }
 }

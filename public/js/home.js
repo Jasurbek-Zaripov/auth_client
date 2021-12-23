@@ -1,36 +1,50 @@
 let exit = document.querySelector('#exit')
 
-if (!localStorage.getItem('user_name_for_check')) {
-  location = '/user/login'
-}
+setInterval(() => {
+  if (
+    !localStorage.getItem('user_name_for_check') ||
+    !localStorage.getItem('user_id_for_check')
+  ) {
+    location = '/user/login'
+  }
+}, 1000)
 
 const div_welcome = document.querySelector('#welcome')
-div_welcome.classList.add('modal-inner')
 const salom = document.querySelector('#salom')
+
+div_welcome.classList.add('modal-inner')
+
 salom.innerHTML = `Welcome ${localStorage.getItem('user_name_for_check')}!`
+
 div_welcome.onclick = () => {
   div_welcome.classList.remove('modal-inner')
 }
 
-exit.addEventListener('click', async () => {
+exit.onclick = async () => {
   let result_online = await fetch(
-    `https://auth0-server.herokuapp.com/user/exit?username=${localStorage.getItem(
-      'user_name_for_check'
-    )}`,
+    `https://auth0-server.herokuapp.com/user/exit`,
     {
       method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: localStorage.getItem('user_name_for_check'),
+        user_id: localStorage.getItem('user_id_for_check'),
+      }),
     }
   )
+
   result_online = await result_online.json()
-  console.log(result_online)
+
   if (result_online['ERROR']) {
     return alert(result_online['ERROR'])
-  } else {
-    console.log(result_online['message'])
+  } else if (result_online['message']) {
     localStorage.removeItem('user_name_for_check')
+    localStorage.removeItem('user_id_for_check')
     location = '/user/login'
   }
-})
+}
 
 main_start()
 async function main_start() {
