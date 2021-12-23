@@ -5,7 +5,9 @@
   border-radius: 5px;
   outline: none;
   user-select: none;
+  font-family: 'Poppins', sans-serif;
   border: none;
+  transition-duration: 1s;
 }
 
 body {
@@ -31,7 +33,7 @@ body {
   height: 37px;
   border-radius: 5px;
   font-size: 19px;
-  color: rgb(47, 100, 249);
+  color: rgb(0 40 148);
   background-color: white;
   border-color: rgb(47, 100, 249);
   margin-left: 30px;
@@ -42,7 +44,7 @@ body {
   height: 37px;
   border-radius: 5px;
   font-size: 19px;
-  color: rgb(47, 100, 249);
+  color: rgb(0 40 148);
   background-color: white;
   border-color: rgb(47, 100, 249);
   margin-right: 30px;
@@ -53,7 +55,7 @@ body {
   height: 60px;
   border-radius: 5px;
   font-size: 19px;
-  color: rgb(47, 100, 249);
+  color: rgb(0 40 148);
   background-color: white;
   border-color: rgb(47, 100, 249);
   font-size: 40px;
@@ -105,7 +107,6 @@ body {
 }
 
 .apend {
-  border: 1px solid rgb(199, 199, 199);
   width: 290px;
   height: 150px;
   margin-top: 15px;
@@ -137,16 +138,19 @@ body {
 .todo-qizil {
   border-color: rgb(117, 15, 15);
   box-shadow: 5px 5px 11px 0 rgb(117, 15, 15);
+  color: #680000;
 }
 
 .todo-sariq {
   border-color: rgb(185, 185, 0);
   box-shadow: 5px 5px 11px 0 rgb(185, 185, 0);
+  color: #726000;
 }
 
 .todo-yashil {
   box-shadow: 5px 5px 11px 0 rgb(67, 113, 36);
   border-color: rgb(67, 113, 36);
+  color: #005200;
 }
 
 .modal-inner {
@@ -158,7 +162,7 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  box-shadow: 5px 5px 11px 0px #4e0303;
+  box-shadow: 5px 5px 11px 0px #2b0000c7;
   transform: translate(-50%, -50%);
 }
 

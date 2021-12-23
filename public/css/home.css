@@ -3,6 +3,9 @@
   margin: 0;
   font-family: 'Poppins', sans-serif;
   padding: 0;
+  border-radius: 5px;
+  outline: none;
+  user-select: none;
 }
 
 .container1 {
@@ -35,14 +38,28 @@
 .anker {
   display: flex;
   align-items: center;
-  padding: 0 30px;
+  padding: 15px 30px;
   width: 700px;
   height: 50px;
-  background-color: rgb(212, 224, 254);
+  background-color: rgb(255 0 118 / 10%);
   border-radius: 5px;
   margin-top: 15px;
+  box-shadow: 5px 5px 11px 0px #ff007630;
+  transition-duration: 0.6s;
 }
-
+.anker:hover {
+  box-shadow: 7px 7px 9px 0px #ff007755;
+}
+.anker:active {
+  box-shadow: 4px 4px 12px 0px #ff007755;
+}
+.anker > a {
+  font-size: 35px;
+  transition-duration: 0.4s;
+}
+.anker > a:hover {
+  color: rgb(30, 30, 30);
+}
 .link {
   color: rgb(6, 2, 135);
   font-size: 20px;
@@ -77,8 +94,11 @@
   position: fixed;
   right: 8%;
   top: 6%;
-  box-shadow: 5px 5px 11px 0px #4e0303;
+  box-shadow: 5px 5px 11px 0px #00ff6621;
   transform: translate(-50%, -50%);
+}
+.modal-inner:hover {
+  box-shadow: 5px 5px 11px 0px #00ff6630;
 }
 
 .block {
