@@ -2,10 +2,7 @@ let search_username = localStorage.getItem('user_name_for_search')
 let my_name_local = localStorage.getItem('user_name_for_check')
 
 setInterval(() => {
-  if (
-    !localStorage.getItem('user_name_for_check') ||
-    !localStorage.getItem('user_id_for_check')
-  ) {
+  if (!localStorage.getItem('user_id_for_check')) {
     location = '/user/login'
   }
 }, 1000)
@@ -18,16 +15,19 @@ if (search_username) {
 
 let exit = document.querySelector('#exit')
 exit.onclick = async () => {
-  let result_online = await fetch(`http://localhost:3000/user/exit`, {
-    method: 'PUT',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      username: localStorage.getItem('user_name_for_check'),
-      user_id: localStorage.getItem('user_id_for_check'),
-    }),
-  })
+  let result_online = await fetch(
+    `https://auth0-server.herokuapp.com/user/exit`,
+    {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: localStorage.getItem('user_name_for_check'),
+        user_id: localStorage.getItem('user_id_for_check'),
+      }),
+    }
+  )
 
   result_online = await result_online.json()
 
@@ -59,7 +59,7 @@ main_start()
 
 async function main_start() {
   result = await fetch(
-    'http://localhost:3000/todo?username=' +
+    'https://auth0-server.herokuapp.com/todo?username=' +
       search_username +
       '&user_id=' +
       localStorage.getItem('user_id_for_check')
@@ -104,6 +104,85 @@ function render_todo() {
     let option2 = document.createElement('option')
     let option3 = document.createElement('option')
 
+    h4.onmousedown = e => {
+      let down_x = e.screenX
+      let down_y = e.screenY
+
+      div.id = 'move'
+
+      function for_move(ev) {
+        let move_x = ev.screenX
+        let move_y = ev.screenY
+        move_x = move_x - down_x
+        move_y = move_y - down_y
+        div.style.top = move_y + 'px'
+        div.style.left = move_x + 'px'
+      }
+
+      h4.addEventListener('mousemove', for_move)
+      h4.onmouseout = () => {
+        h4.removeEventListener('mousemove', for_move)
+      }
+      h4.onmouseup = async eve => {
+        h4.removeEventListener('mousemove', for_move)
+        div.id = ''
+        div.style.top = 0 + 'px'
+        div.style.left = 0 + 'px'
+
+        if (my_name_local != search_username) return
+
+        let full_width = eve.view.innerWidth
+        let my_cordinate = eve.screenX
+
+        if (full_width / 3 > my_cordinate) {
+          div.remove()
+          div.classList.remove('todo-sariq')
+          div.classList.remove('todo-yashil')
+          div.classList.add('todo-qizil')
+          option2.removeAttribute('selected')
+          option3.removeAttribute('selected')
+          option1.setAttribute('selected', 'selected')
+          todo_red.append(div)
+        } else if ((full_width / 3) * 2 > my_cordinate) {
+          div.remove()
+          div.classList.remove('todo-yashil')
+          div.classList.remove('todo-qizil')
+          div.classList.add('todo-sariq')
+          option1.removeAttribute('selected')
+          option3.removeAttribute('selected')
+          option2.setAttribute('selected', 'selected')
+          todo_yel.append(div)
+        } else {
+          div.remove()
+          div.classList.remove('todo-sariq')
+          div.classList.remove('todo-qizil')
+          div.classList.add('todo-yashil')
+          option1.removeAttribute('selected')
+          option2.removeAttribute('selected')
+          option3.setAttribute('selected', 'selected')
+          todo_gre.append(div)
+        }
+        let res_put = await fetch('https://auth0-server.herokuapp.com/todo', {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            username: my_name_local,
+            todoID: todo_id,
+            holat: select.value,
+            user_id: localStorage.getItem('user_id_for_check'),
+          }),
+        })
+
+        res_put = await res_put.json()
+
+        if (res_put['ERROR']) {
+          return alert(res_put['ERROR'])
+        }
+      }
+    }
+
     select.onchange = async () => {
       if (my_name_local != search_username) return
 
@@ -123,7 +202,7 @@ function render_todo() {
         todo_gre.append(div)
       }
 
-      let res_put = await fetch('http://localhost:3000/todo', {
+      let res_put = await fetch('https://auth0-server.herokuapp.com/todo', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -217,7 +296,7 @@ function get_new_todo() {
   }, 1000)
 
   new_btn.onclick = async () => {
-    let res_ult = await fetch('http://localhost:3000/todo/new', {
+    let res_ult = await fetch('https://auth0-server.herokuapp.com/todo/new', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

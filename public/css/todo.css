@@ -7,7 +7,6 @@
   user-select: none;
   font-family: 'Poppins', sans-serif;
   border: none;
-  transition-duration: 1s;
 }
 
 body {
@@ -115,6 +114,12 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+.apend > h4 {
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .select {
@@ -227,4 +232,10 @@ body {
 .todos {
   font-size: 21px;
   margin: 0px 17px 0px 42px;
+}
+#move {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 9999;
 }

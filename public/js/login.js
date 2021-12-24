@@ -1,7 +1,4 @@
-if (
-  localStorage.getItem('user_name_for_check') ||
-  localStorage.getItem('user_id_for_check')
-) {
+if (localStorage.getItem('user_id_for_check')) {
   location = '/'
 }
 
@@ -59,7 +56,7 @@ login_btn.onclick = async () => {
   }
 
   if (user_bool && pass_bool) {
-    let result = await fetch('http://localhost:3000/user/check', {
+    let result = await fetch('https://auth0-server.herokuapp.com/user/check', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

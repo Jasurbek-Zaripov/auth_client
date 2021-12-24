@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 4000
-const HOST = 'localhost'
+const HOST = '192.168.0.37'
 const { join } = require('path')
 
 app.use(express.static('public'))
