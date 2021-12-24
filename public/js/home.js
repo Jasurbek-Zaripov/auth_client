@@ -1,17 +1,21 @@
 let exit = document.querySelector('#exit')
-
+let user_name_for = localStorage.getItem('user_name_for_check')
 setInterval(() => {
   if (!localStorage.getItem('user_id_for_check')) {
     location = '/user/login'
   }
 }, 1000)
 
+setInterval(() => {
+  localStorage.setItem('user_name_for_check', user_name_for)
+}, 1500)
+
 const div_welcome = document.querySelector('#welcome')
 const salom = document.querySelector('#salom')
 
 div_welcome.classList.add('modal-inner')
 
-salom.innerHTML = `Welcome ${localStorage.getItem('user_name_for_check')}!`
+salom.innerHTML = `Welcome ${user_name_for}!`
 
 div_welcome.onclick = () => {
   div_welcome.classList.remove('modal-inner')

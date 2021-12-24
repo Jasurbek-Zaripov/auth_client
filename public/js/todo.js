@@ -7,6 +7,10 @@ setInterval(() => {
   }
 }, 1000)
 
+setInterval(() => {
+  localStorage.setItem('user_name_for_check', my_name_local)
+}, 1500)
+
 if (search_username) {
   localStorage.removeItem('user_name_for_search')
 } else {
