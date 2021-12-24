@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      if (localStorage.getItem('user_id_for_check')) {
+        location = '/'
+      }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -21,16 +26,12 @@
       <div class="username-container">
         <h1 class="h1">Username</h1>
         <input id="userInp" type="text" class="inp" />
-        <div id="userError">
-          <!-- <h5 class="qiz">Error bo'ldi ukam!</h5> -->
-        </div>
+        <div id="userError"> </div>
       </div>
       <div class="password-container">
         <h1 class="h1">Password</h1>
         <input id="passwordInp" type="password" class="inp" />
-        <div id="passwordError">
-          <!-- <h5 class="qiz yash">Error bo'ldi ukam!</h5> -->
-        </div>
+        <div id="passwordError"> </div>
       </div>
       <div class="btn-container">
         <button id="submit-btn" class="btn1">OK</button>
