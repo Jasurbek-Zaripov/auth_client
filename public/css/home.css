@@ -108,3 +108,13 @@
 .todos {
   font-size: 23px;
 }
+
+.btn-shadow-green {
+  box-shadow: 5px 5px 11px 0px #00ff2611;
+}
+.btn-shadow-green:hover {
+  box-shadow: 5px 5px 11px 0px #22ff002b;
+}
+.btn-shadow-green:active {
+  box-shadow: 3px 3px 11px 1px #4dff003e;
+}

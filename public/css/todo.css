@@ -57,7 +57,7 @@ body {
   color: rgb(0 40 148);
   background-color: white;
   border-color: rgb(47, 100, 249);
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .container {
@@ -238,4 +238,24 @@ body {
   top: 0;
   left: 0;
   z-index: 9999;
+}
+
+.btn-shadow-blue {
+  box-shadow: 5px 5px 11px 0px #0000ff11;
+}
+.btn-shadow-blue:hover {
+  box-shadow: 5px 5px 11px 0px #0000ff2b;
+}
+.btn-shadow-blue:active {
+  box-shadow: 3px 3px 11px 1px #0000ff3e;
+}
+
+.btn-shadow-red {
+  box-shadow: 5px 5px 11px 0px #ff000011;
+}
+.btn-shadow-red:hover {
+  box-shadow: 5px 5px 11px 0px #ff00002b;
+}
+.btn-shadow-red:active {
+  box-shadow: 3px 3px 11px 1px #ff00003e;
 }
